@@ -1,42 +1,20 @@
-// axios.get(url)
-//   .then(response => {
-//     let html = response.data;
-//     console.log(getData(html));
-//   })
-//   .catch(error => {
-//     console.log(error);
-//   })
+// const sentiment = new Sentiment();
+// const result = sentiment.analyze('Cats are stupid.');
 
-// let getData = html => {
-//   data = [];
-//   const $ = cheerio.load(html);
-//   $('table.itemlist tr td:nth-child(3)').each((i, elem) => {
-//     data.push({
-//       title : $(elem).text(),
-//       link : $(elem).find('a.storylink').attr('href')
-//     });
-//   });
-//   return data;
-// }
+// console.log('whats the number', result);
 
-// const url = 'https://tinder.com/app/profile'
-
-// axios.get(url)
-//   .then(response => {
-//     let html = response.data;
-//     console.log(html)
-//     // console.log(getData(html));
-//   })
-//   .catch(error => {
-//     console.log(error);
-//   })
-
-// // let getData = html => {
-// //   let data = {};
-// //   const $ = cheerio.load(html);
-//       data.title =
-// //   return data;
-// // }
+// reviews.forEach(function(comment) {
+//   comment.sentiment = ml.classify(comment.body);
+//   if (comment.sentiment >= 5) {
+//     comment.emoji = "😃";
+//   } else if (comment.sentiment > 0) {
+//     comment.emoji = "🙂";
+//   } else if (comment.sentiment == 0) {
+//     comment.emoji = "😐";
+//   } else {
+//     comment.emoji = "😕";
+//   }
+// });
 
 
 //below console.logs --- "Promise { <pending> }"
@@ -71,3 +49,8 @@
 //   });
 //   return formattedData;
 // }
+
+//YELP
+//business info aka ambience and noise level, etc
+//'.short-def-list dl'
+
