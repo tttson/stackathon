@@ -2,10 +2,10 @@ import React, {Component} from 'react'
 
 const Row = (props) => {
   const eachReview = props.reviews
-  const selectRestaurant = props.xyz
+  const selectReview = props.xyz
   // console.log('hihihi', props.xyz)
   return (
-    <tr onClick = {() => selectRestaurant(eachReview.id)}>
+    <tr onClick = {() => selectReview(eachReview.id)}>
       <td>{eachReview.score}</td>
       <td>{eachReview.stars}</td>
       <td>{eachReview.occasion}</td>

@@ -24,10 +24,8 @@ class Form extends React.Component {
     return (
       <div id="container">
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username:</label>
-          <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-          <label htmlFor="password">Password:</label>
-          <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+          <label htmlFor="url">Please enter <img className="yelp-image-size" src="https://storage.googleapis.com/kaggle-competitions/kaggle/4829/logos/front_page.png" /> restaurant link for analysis</label>
+          <input type="text" name="url" value={this.state.url} onChange={this.handleChange} />
           <button type="submit">Submit</button>
         </form>
       </div>
