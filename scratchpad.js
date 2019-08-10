@@ -17,15 +17,13 @@
 // });
 
 
-//below console.logs --- "Promise { <pending> }"
+// below console.logs --- "Promise { <pending> }"
 // async function getRawHTML () {
-//   const response = await axios.get(url)
-//   return response
+//   await axios.get(url)
 // }
 // let rawHTML = getRawHTML()
 // console.log('doesthiswerk', rawHTML)
 
-// node index.js to run code
 
 /////////********/THIS WORKS/**********////////////
 // const url = 'https://news.ycombinator.com/'

@@ -1,29 +1,54 @@
 import React, {Component} from 'react'
 import Row from './row'
 
-const Table = (props) => {
-  const reviews = props.placeholder1
-  const selectReview = props.placeholder2
-  // console.log('testinggg', props)
-  return (
-  <table className="table is-fullwidth">
-    <tbody>
-    <thead>
-      <tr>
-        <th>Sentiment Score</th>
-        <th>Yelp Stars</th>
-        <th>Good Option For</th>
-        <th>Dress Attire Suggestions</th>
-      </tr>
-    </thead>
-      {
-        reviews.map(eareview => (
-        <Row key={eareview.id} placeholder3= {eareview} placeholder4= {selectReview} />
-        ))
-      }
-    </tbody>
-  </table>
-  )
-}
+export default class Table extends Component {
+  constructor () {
+    super()
+    this.state = {
+      reviews: [],
+      url: this.props.url
+    }
+  }
+    async componentDidMount () {
+        try {
+          let formattedData = []
+          let response = await axios.get(this.state.url)
+          let html = response.data;
+          const $ = await cheerio.load(html)
+         $('.review.review--with-sidebar').each((i, elem) => {
+            formattedData.push({
+              stars: $(elem).find('img.offscreen').attr('alt'),
+              review: $(elem).find('.review-content p').html()
+            })
+          })
+          this.setState({
+            reviews: formattedData
+          })
+        } catch (err) {
+          console.log(err);
+        }
+    }
 
-export default Table
+    getSentimentScore () {
+      let sentiment = new Sentiment();
+      console.log(this.state.reviews)
+    }
+    render () {
+      return (
+        <table>
+          <tbody>
+            <tr>
+              <th>Sentiment Score</th>
+              <th>Stars</th>
+              <th>Review</th>
+            </tr>
+            {
+              this.state.reviews.map((review, i)=> (
+              <Row key={i} score={review.score} stars={review.stars} review={review.review} />
+              ))
+            }
+          </tbody>
+        </table>
+        )
+      }
+  }

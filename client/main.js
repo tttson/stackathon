@@ -1,56 +1,52 @@
 import React from 'react'
 import {Router, Link, Route} from 'react-router-dom'
 import Navbar from './navbar'
-import Form from './form'
 import Table from './table'
 
 
-export default class Main extends React.Component {
-  constructor(){
+class Main extends React.Component {
+  constructor () {
     super()
     this.state = {
-      reviews: [],
-      selectedReview: {}
-    }
-    this.selectReview = this.selectReview.bind(this)
-  }
-  async componentDidMount () {
-    try {
-      // need to call firebase database to see if information exists. if not, run web scraper
-      // const response = await axios.get('/api/reviews')
-      // const allreviews = response.data
-      // this.setState({
-      //   reviews: allreviews
-      // })
-    } catch (err) {
-      console.log('There was a problem getting pups!')
+      url: 'https://www.yelp.com/biz/hibino-brooklyn?osq=sushi'
     }
   }
-  // async selectReview (reviewId) {
-  //   try {
-  //     const response = how to get data back from firebase?
-  //     const chosen = response.data
-  //     this.setState({
-  //       selectedReview: chosen
-  //     })
-  //   } catch (err) {
-  //     console.log('Something went wrong!', err)
-  //   }
-  // }
+
+  //this is to clear the form
+  handleSubmit = event => {
+    event.preventDefault()
+    // const username = event.target.username.value
+    console.log(this.state)
+    this.setState({
+      url: ''
+    })
+  }
+  //this is to set the url
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
   render () {
     return (
-    <Router>
-      <div id="main">
-        <div className="column container">
-            <div id="header">
-                <h1>Yelp Customer Review Sentiments</h1>
-            </div>
-          <Navbar />
+      <div className="nav">
+        <div id="header">
+          <h1>Yelp Customer Review Sentiments</h1>
         </div>
-          <Route exact path="/" component={Form} />
-          <Route exact path="/results" component={Table} />
+          <Navbar />
+      <div id="container">
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="url">Please enter <img className="yelp-image-size" src="https://storage.googleapis.com/kaggle-competitions/kaggle/4829/logos/front_page.png" /> restaurant link for analysis</label>
+          <input type="text" name="url" value={this.state.url} onChange={this.handleChange} />
+          <button type="submit">Submit</button>
+        </form>
+        {
+            this.state.url.length ? <Table url={this.state.url} /> : null
+        }
       </div>
-    </Router>
+      </div>
     )
   }
 }
+
+export default Main

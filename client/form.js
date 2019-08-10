@@ -28,6 +28,9 @@ class Form extends React.Component {
           <input type="text" name="url" value={this.state.url} onChange={this.handleChange} />
           <button type="submit">Submit</button>
         </form>
+        {
+            this.state.url ? <Table reviewData = {this.state.url} /> :
+        }
       </div>
     )
   }
