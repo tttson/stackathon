@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
-const {db, Contact} = require('./db')
+// const {db, Contact} = require('./db')
 const app = express()
 const PORT = 3000
 
@@ -51,13 +51,13 @@ app.use((err, req, res, next) => {
   res.send(err.message || 'Internal server error')
 })
 
-db.sync()
-  .then(() => {
-    console.log('The database is synced!')
+// db.sync()
+//   .then(() => {
+//     console.log('The database is synced!')
     app.listen(PORT, () => console.log(`
 
       Listening on port ${PORT}
       http://localhost:3000/
 
     `))
-  })
+  // })

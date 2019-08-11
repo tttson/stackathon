@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <div id="navbar" className="row">
-      <Link to="/">Go back to search page</Link>
-      <Link to="/results">Go to results</Link>
+    <div id="container" className="row">
+      <p>Go back to search page</p>
+      <p>Go to results</p>
     </div>
   )
 }
