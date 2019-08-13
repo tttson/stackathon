@@ -22,7 +22,6 @@ async function getRawHTML () {
   }
 }
 
-let sentiment = new Sentiment();
 getRawHTML().then((data) => {data.forEach(obj => {
     obj.score = 0
   })
