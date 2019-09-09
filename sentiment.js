@@ -7,26 +7,23 @@ const url = 'https://www.yelp.com/biz/hibino-brooklyn?osq=sushi'
 async function getRawHTML () {
   try {
     let formattedData = []
-    let response = await axios.get(url)
+    let response = await axios.get('https://www.yelp.com/biz/hibino-brooklyn?osq=sushi')
     let html = response.data;
-    const $ = await cheerio.load(html)
-   $('.review.review--with-sidebar').each((i, elem) => {
-      formattedData.push({
-        stars: $(elem).find('img.offscreen').attr('alt'),
-        review: $(elem).find('.review-content p').html()
-      })
-    })
-    return formattedData
+  //   const $ = await cheerio.load(html)
+  //  $('.review.review--with-sidebar').each((i, elem) => {
+  //     formattedData.push({
+  //       stars: $(elem).find('img.offscreen').attr('alt'),
+  //       review: $(elem).find('.review-content p').html()
+  //     })
+  //   })
+    return html
   } catch (err) {
     console.log(err);
   }
 }
 
-getRawHTML().then((data) => {data.forEach(obj => {
-    obj.score = 0
-  })
-  console.log('madeithere', data)
-})
+getRawHTML().then(data =>
+  console.log(data))
 
 
 // let sentiment = new Sentiment();

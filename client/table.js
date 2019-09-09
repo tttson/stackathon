@@ -1,7 +1,7 @@
 import React from 'react'
 const axios = require('axios');
 const cheerio = require('cheerio');
-var Sentiment = require('sentiment');
+const Sentiment = require('sentiment');
 
 // const reviews = [
 //   {"Sentiment Score": 5, "Yelp Stars": "3-star rating", Review: "This is good food for the value" },
@@ -37,16 +37,12 @@ class Table extends React.Component {
   }
 
   getSentimentScore () {
-    let sentiment = new Sentiment()
+    sentiment = new Sentiment()
   }
 
   render () {
     console.log(this.state.reviews)
     return (
-      <div id='main'>
-        <div id='navbar'>
-          <div>ISSA TERESTAURANT VIBE</div>
-        </div>
         <div id='container'>
           <table>
             <tbody>
@@ -69,7 +65,6 @@ class Table extends React.Component {
             </tbody>
           </table>
         </div>
-      </div>
     )
   }
 }

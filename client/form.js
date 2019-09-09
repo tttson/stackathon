@@ -1,12 +1,11 @@
 import React from 'react'
 import {Router, Link, Route} from 'react-router-dom'
-import Navbar from './navbar'
 
 class Form extends React.Component {
   constructor () {
     super()
     this.state = {
-      url: 'https://www.yelp.com/biz/hibino-brooklyn?osq=sushi'
+      url: ''
     }
   }
 
@@ -27,18 +26,18 @@ class Form extends React.Component {
   }
   render () {
     return (
-      <div className="nav">
-        <div id="header">
-          <h1>Yelp Customer Review Sentiments</h1>
-        </div>
-          <Navbar />
-      <div id="container">
+      <div>
+        <div id="container">
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="url">Please enter <img className="yelp-image-size" src="https://storage.googleapis.com/kaggle-competitions/kaggle/4829/logos/front_page.png" /> restaurant link for analysis</label>
-          <input type="text" name="url" value={this.state.url} onChange={this.handleChange} />
-          <Link to={'/table'}><button type="submit">Submit</button></Link>
+        <div className="submit">
+            <label htmlFor="url">Please enter <img className="yelp-image-size" src="https://storage.googleapis.com/kaggle-competitions/kaggle/4829/logos/front_page.png" /> restaurant link for customer review sentiments</label>
+        </div>
+            <input type="text" name="url" value={this.state.url} onChange={this.handleChange} />
+            <div className="submit">
+              <Link to="/table"><button id="submitbutton" type="submit">Submit</button></Link>
+            </div>
         </form>
-      </div>
+        </div>
       </div>
     )
   }

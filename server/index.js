@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')))
 // })
 
 // For all GET requests that aren't to an API route,
-// we will send the index.html!
+// send the index.html
 app.get('/*', (req, res, next) => {
   res.sendFile(path.join(__dirname, '..', 'index.html'))
 })
@@ -51,13 +51,10 @@ app.use((err, req, res, next) => {
   res.send(err.message || 'Internal server error')
 })
 
-// db.sync()
-//   .then(() => {
-//     console.log('The database is synced!')
+
     app.listen(PORT, () => console.log(`
 
       Listening on port ${PORT}
       http://localhost:3000/
 
     `))
-  // })
