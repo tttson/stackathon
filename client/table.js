@@ -2,43 +2,29 @@ import React from 'react'
 const axios = require('axios');
 const cheerio = require('cheerio');
 const Sentiment = require('sentiment');
-
-// const reviews = [
-//   {"Sentiment Score": 5, "Yelp Stars": "3-star rating", Review: "This is good food for the value" },
-//   {"sentiment score": 8, "Yelp Stars": "5-star rating", Review: "Highly recommend this anyone who is hungry"},
-//   {"sentiment score": -3, "Yelp Stars", "1-star rating", Review: "Terrible service, gross food, never coming back again"}
-// ]
+const yelp = require('yelp-fusion');
+const client = yelp.client('RFjX6wL0YbJSDHpkizRDX-M7eH4eqQH8qr1PSyugkS1y4Fxw4CqJ3SvC5PnmT6RPGCYsryQmIZmamkVUE6BTaOFq2ZK7ftc2QQLlIyaDrJYf2ybeBjtvyTvSJGx3XXYx');
 
 class Table extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
       reviews: []
     }
   }
-  async componentDidMount () {
-    try {
-      let formattedData = []
-      let response = await axios.get(this.state.url)
-      let html = response.data
-      const $ = await cheerio.load(html)
-     $('.review.review--with-sidebar').each((i, elem) => {
-        formattedData.push({
-          stars: $(elem).find('img.offscreen').attr('alt'),
-          review: $(elem).find('.review-content p').html()
-        })
-      })
+  componentDidMount () {
+    client.reviews('los-mariscos-new-york').then(response => {
       this.setState({
-        reviews: formattedData
+        reviews: response.body.reviews
       })
-    } catch (err) {
+    }).catch(err => {
       console.log(err);
-    }
+    });
   }
 
-  getSentimentScore () {
-    sentiment = new Sentiment()
-  }
+  // getSentimentScore () {
+  //   let sentiment = new Sentiment()
+  // }
 
   render () {
     console.log(this.state.reviews)
@@ -47,7 +33,7 @@ class Table extends React.Component {
           <table>
             <tbody>
               <tr>
-                <th>Score</th>
+                <th>Sentiment Score</th>
                 <th>Yelp Stars</th>
                 <th>Review</th>
               </tr>

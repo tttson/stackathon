@@ -1,28 +1,43 @@
-// const sentiment = new Sentiment();
-// const result = sentiment.analyze('Cats are stupid.');
-
-// console.log('whats the number', result);
-
-// reviews.forEach(function(comment) {
-//   comment.sentiment = ml.classify(comment.body);
-//   if (comment.sentiment >= 5) {
-//     comment.emoji = "😃";
-//   } else if (comment.sentiment > 0) {
-//     comment.emoji = "🙂";
-//   } else if (comment.sentiment == 0) {
-//     comment.emoji = "😐";
-//   } else {
-//     comment.emoji = "😕";
-//   }
-// });
+const axios = require('axios');
+const cheerio = require('cheerio');
+const Nightmare = require('nightmare')
 
 
-// below console.logs --- "Promise { <pending> }"
+const yelp = require('yelp-fusion');
+const client = yelp.client('RFjX6wL0YbJSDHpkizRDX-M7eH4eqQH8qr1PSyugkS1y4Fxw4CqJ3SvC5PnmT6RPGCYsryQmIZmamkVUE6BTaOFq2ZK7ftc2QQLlIyaDrJYf2ybeBjtvyTvSJGx3XXYx');
+
+client.reviews('los-mariscos-new-york').then(response => {
+  console.log(response.body);
+}).catch(e => {
+  console.log(e);
+});
+
+
+
+/////////********/THIS USED TO WORK FOR STATIC PAGES/**********////////////
+// const url = 'https://www.yelp.com/biz/hibino-brooklyn?osq=sushi'
 // async function getRawHTML () {
-//   await axios.get(url)
+//   try {
+//     let formattedData = []
+//     let response = await axios.get(url)
+//     let html = response.data;
+//     const $ = await cheerio.load(html)
+//    $('.review.review--with-sidebar').each((i, elem) => {
+//       formattedData.push({
+//         stars: $(elem).find('img.offscreen').attr('alt'),
+//         review: $(elem).find('.review-content p').html()
+//       })
+//     })
+//     return formattedData
+//   } catch (err) {
+//     console.log(err);
+//   }
 // }
-// let rawHTML = getRawHTML()
-// console.log('doesthiswerk', rawHTML)
+// getRawHTML().then((data) => {data.forEach(obj => {
+//     obj.score = 0
+//   })
+//   console.log('madeithere', data)
+// })
 
 
 /////////********/THIS WORKS/**********////////////
@@ -47,8 +62,54 @@
 //   });
 //   return formattedData;
 // }
+/////////****/WORK IN PROGRESS****//////////
 
-//YELP
-//business info aka ambience and noise level, etc
-//'.short-def-list dl'
+// const url = 'https://www.yelp.com/biz/hibino-brooklyn?osq=sushi'
+// async function getRawHTML () {
+//   try {
+//     let formattedData = []
+//     let response = await axios.get(url)
+//     let html = response.data;
+//     const $ = await cheerio.load(html)
+//    $('.lemon--div__373c0__1mboc spinner-container__373c0__N6Hff border-color--default__373c0__2oFDT').each((i, elem) => {
+//       formattedData.push({
+//         review: $(elem).find('.lemon--p__373c0__3Qnnj text__373c0__2pB8f comment__373c0__3EKjH text-color--normal__373c0__K_MKN text-align--left__373c0__2pnx_').text()
+//       })
+//     })
+//     return formattedData
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
 
+// getRawHTML().then((data) => {
+//   console.log('madeithere', data)
+//   return data
+// })
+
+/////////////////////////
+// const nightmare = Nightmare({ show: true })
+// const url = 'https://news.ycombinator.com';
+
+// nightmare
+//   .goto(url)
+//   .wait('body')
+//   .evaluate(() => document.querySelector('body').innerHTML)
+//   .end()
+//   .then(response => {
+//     console.log(getData(response));
+//   }).catch(err => {
+//     console.log(err);
+//   });
+
+// let getData = html => {
+//   data = [];
+//   const $ = cheerio.load(html);
+//   $('table.itemlist tr td:nth-child(3)').each((i, elem) => {
+//     data.push({
+//       title : $(elem).text(),
+//       link : $(elem).find('a.storylink').attr('href')
+//     });
+//   });
+//   return data;
+// }
