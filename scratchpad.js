@@ -1,17 +1,16 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const Nightmare = require('nightmare')
-
-
+// const axios = require('axios');
+// const cheerio = require('cheerio');
+// const Nightmare = require('nightmare')
 const yelp = require('yelp-fusion');
+
 const client = yelp.client('RFjX6wL0YbJSDHpkizRDX-M7eH4eqQH8qr1PSyugkS1y4Fxw4CqJ3SvC5PnmT6RPGCYsryQmIZmamkVUE6BTaOFq2ZK7ftc2QQLlIyaDrJYf2ybeBjtvyTvSJGx3XXYx');
 
-client.reviews('los-mariscos-new-york').then(response => {
-  console.log(response.body);
+export const myreviews = client.reviews('peter-luger-brooklyn-2').then(response => {
+  console.log(response.body)
+  return response.body
 }).catch(e => {
   console.log(e);
 });
-
 
 
 /////////********/THIS USED TO WORK FOR STATIC PAGES/**********////////////

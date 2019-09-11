@@ -1,53 +1,26 @@
 import React from 'react'
 import {Router, Link, Route} from 'react-router-dom'
 import Table from './table';
+const axios = require('axios');
 
-class Form extends React.Component {
-  constructor () {
-    super()
-    this.state = {
-      url: ''
-    }
-  }
-
-  //this is to clear the form
-  handleSubmit = event => {
-    event.preventDefault()
-    this.setState(prevState => ({
-      url: this.getbusinessId(prevState.url)
-    }))
-    console.log(this.state)
-  }
-  //this is to set the url
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
-  //this grabs the business id from the url
-  getbusinessId = (url) => {
-    let startIdx = url.indexOf('biz/') + 4
-    let endIdx = url.indexOf('?')
-    let bizId = url.split('').slice(startIdx, endIdx).join('')
-  return bizId
-}
-  render () {
+const Form = (props) => {
+const {handleChange, handleSubmit, getbusinessId, url} = props
     return (
       <div>
         <div id="container">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div className="submit">
             <label htmlFor="url">Please enter <img className="yelp-image-size" src="https://storage.googleapis.com/kaggle-competitions/kaggle/4829/logos/front_page.png" /> restaurant link for customer review sentiments</label>
             </div>
-            <input type="text" name="url" value={this.state.url} onChange={this.handleChange} />
+            <input type="text" name="url" value={url} onChange={handleChange} />
             <div className="submit">
             <Link to="/table"><button id="submitbutton" type="submit">Submit</button></Link>
             </div>
         </form>
         </div>
+        {/* {this.state.bizId.length > 0 ? <Table reviews={this.state.reviews} url={this.state.url} /> : null} */}
       </div>
     )
-  }
 }
 
 export default Form

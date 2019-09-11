@@ -1,11 +1,18 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar = (props) => {
+  // function refreshPage() {
+  //   window.location.reload()
+  // }
   return (
     <div id="navbar">
         <h1>ISSA RESTAURANT VIBE</h1>
-        <Link to="/"><p>go back to search page</p></Link>
+        {/* <p onClick={refreshPage}> &#x21bb; reset search</p> */}
+        {props.location.pathname == '/table' ?
+        <Link to="/"><p>go back to search</p></Link>
+        :
+        null}
     </div>
   )
 }
