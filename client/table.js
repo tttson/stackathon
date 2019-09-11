@@ -27,32 +27,34 @@ class Table extends React.Component {
   }
 
   parse = (response) => {
+    let sentiment = new Sentiment()
     let parsed = response.reviews.map(eaReview => {
-      return {review: eaReview.text, rating: eaReview.rating}
+      return {review: eaReview.text, rating: eaReview.rating, score: sentiment.analyze(eaReview.text).score}
     })
+
     return parsed
   }
 
-    getSentimentScore () {
-    let sentiment = new Sentiment()
+    getSentimentScore (reviews) {
+    let result = this.sentiment.analyze(reviews)
+    return result.score
   }
 
   getRestaurantReviews () {
-    let businessId = this.getbusinessId(this.props.url)
-    axios.get(`https://api.yelp.com/v3/businesses/${businessId}/reviews`
-    // axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/${businessId}/reviews`
-    , {
+    let id = this.getbusinessId(this.props.url)
+    // axios.get(`https://api.yelp.com/v3/businesses/${id}/reviews`, {
+    axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/${id}/reviews`, {
         //required authorization format from API
         headers: {
           //need to hide key in a secrets file
-            Authorization: `Bearer M7eH4eqQH8qr1PSyugkS1y4Fxw4CqJ3SvC5PnmT6RPGCYsryQmIZmamkVUE6BTaOFq2ZK7ftc2QQLlIyaDrJYf2ybeBjtvyTvSJGx3XXYx`
+            Authorization: 'Bearer RFjX6wL0YbJSDHpkizRDX-M7eH4eqQH8qr1PSyugkS1y4Fxw4CqJ3SvC5PnmT6RPGCYsryQmIZmamkVUE6BTaOFq2ZK7ftc2QQLlIyaDrJYf2ybeBjtvyTvSJGx3XXYx'
         }
         })
         .then((res) => {
             console.log(res.data)
             //set local state to for reviews
             //prob need to call sentiment here and map through reviews before setting to state
-            let formatted = this.parse(res)
+            let formatted = this.parse(res.data)
             this.setState({ reviews: formatted})
         })
         .catch((err) => {
@@ -77,7 +79,7 @@ class Table extends React.Component {
                   return (
                   <tr key={i}>
                   <td>{review.score}</td>
-                  <td>{review.stars}</td>
+                  <td>{review.rating}</td>
                   <td>{review.review}</td>
                   </tr>
                   )

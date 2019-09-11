@@ -4,7 +4,7 @@ import Table from './table';
 const axios = require('axios');
 
 const Form = (props) => {
-const {handleChange, handleSubmit, getbusinessId, url} = props
+const {handleChange, handleSubmit, url} = props
     return (
       <div>
         <div id="container">
@@ -18,7 +18,6 @@ const {handleChange, handleSubmit, getbusinessId, url} = props
             </div>
         </form>
         </div>
-        {/* {this.state.bizId.length > 0 ? <Table reviews={this.state.reviews} url={this.state.url} /> : null} */}
       </div>
     )
 }

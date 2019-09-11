@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 // const {db, Contact} = require('./db')
 const app = express()
+const request = require('request')
 const PORT = 3000
 
 // Logging middleware
@@ -17,20 +18,22 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, '..', 'public')))
 
 // API routes
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
-// app.get('/api/contacts', (req, res, next) => {
-//   Contact.findAll({
-//     attributes: ['id', 'name', 'email', 'phone']
-//   })
-//     .then(contacts => res.json(contacts))
-//     .catch(next)
-// })
-
-// app.get('/api/contacts/:contactId', (req, res, next) => {
-//   Contact.findById(req.params.contactId)
-//     .then(contact => res.json(contact))
-//     .catch(next)
-// })
+// app.get('/jokes/random', (req, res) => {
+//   request(
+//     { url: 'https://joke-api-strict-cors.appspot.com/jokes/random' },
+//     (error, response, body) => {
+//       if (error || response.statusCode !== 200) {
+//         return res.status(500).json({ type: 'error', message: err.message });
+//       }
+//       res.json(JSON.parse(body));
+//     }
+//   )
+// });
 
 // For all GET requests that aren't to an API route,
 // send the index.html
