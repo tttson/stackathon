@@ -9,7 +9,8 @@ class Table extends React.Component {
     super(props)
     this.state = {
       url: this.props.url,
-      reviews: []
+      reviews: [],
+      loading: true
     }
   }
   componentDidMount () {
@@ -55,7 +56,10 @@ class Table extends React.Component {
             //set local state to for reviews
             //prob need to call sentiment here and map through reviews before setting to state
             let formatted = this.parse(res.data)
-            this.setState({ reviews: formatted})
+            this.setState({
+              reviews: formatted,
+              loading: false
+            })
         })
         .catch((err) => {
             //send error if there is no info returned from the API
@@ -64,10 +68,11 @@ class Table extends React.Component {
     }
 
   render () {
-    console.log(this.state)
+    console.log('whats my staet', this.state)
     return (
         <div id='container'>
-          <table>
+        { this.state.loading ? (<div className="lds-ring"><div></div><div></div><div></div><div></div></div>) :
+          (<table>
             <tbody>
               <tr>
                 <th>Sentiment Score</th>
@@ -86,7 +91,8 @@ class Table extends React.Component {
                 })
               }
             </tbody>
-          </table>
+           </table>)
+        }
         </div>
     )
   }
