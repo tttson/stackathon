@@ -48,7 +48,7 @@ class Table extends React.Component {
         //required authorization format from API
         headers: {
           //need to hide key in a secrets file
-            Authorization: 'Bearer RFjX6wL0YbJSDHpkizRDX-M7eH4eqQH8qr1PSyugkS1y4Fxw4CqJ3SvC5PnmT6RPGCYsryQmIZmamkVUE6BTaOFq2ZK7ftc2QQLlIyaDrJYf2ybeBjtvyTvSJGx3XXYx'
+            Authorization: ''
         }
         })
         .then((res) => {
