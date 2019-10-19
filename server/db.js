@@ -1,7 +1,7 @@
 // const Sequelize = require('sequelize')
 // const db = new Sequelize('postgres://localhost/first-contact', {logging: false})
 
-// const Contact = db.define('contacts', {
+// const User = db.define('user', {
 //   name: {
 //     type: Sequelize.STRING,
 //     allowNull: false
