@@ -1,8 +1,10 @@
 import React from 'react'
 const axios = require('axios');
 const cheerio = require('cheerio');
-const Sentiment = require('sentiment');
 const yelp = require('yelp-fusion');
+const Sentiment = require('sentiment');
+require('../secrets');
+
 
 class Table extends React.Component {
   constructor (props) {
@@ -43,12 +45,13 @@ class Table extends React.Component {
 
   getRestaurantReviews () {
     let id = this.getbusinessId(this.props.url)
-    // axios.get(`https://api.yelp.com/v3/businesses/${id}/reviews`, {
+    //proxy server allows response header to have a 'Access-Control-Allow-Origin' header to address the CORS block. otherwise it wont send out the request 403 error
+    //alternative plan, you can set server side request to yelp api
     axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/${id}/reviews`, {
         //required authorization format from API
         headers: {
           //need to hide key in a secrets file
-            Authorization: ''
+            Authorization: process.env.YELP_API_KEY
         }
         })
         .then((res) => {
