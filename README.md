@@ -24,11 +24,11 @@ Run the following commands in the command line:
 ### Screenshots
 
 <p float="left">
-<img src="https://i.imgur.com/txV81sL.png" height="500px" width="500px" style='display: inline-block'/>
-<img src="https://i.imgur.com/t01vQib.png?1" height="500px" style='display: inline-block'/>
+<img src="https://i.imgur.com/t01vQib.png?1" height="300px" width="500px" style='display: inline-block'/>
+<img src="https://i.imgur.com/oIHCgHj.png" height="500px" style='display: inline-block'/>
 </p>
 <p float="left">
-<img src="https://i.imgur.com/oIHCgHj.png" height="500px" style='display: inline-block'/>
+
 </p>
 
 
