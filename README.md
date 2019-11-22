@@ -1,4 +1,4 @@
-# stackathon - Issa Restaurant Vibe
+# Stackathon - Issa Restaurant Vibe
 
 Did you ever want to know what the vibe was like at a restaurant? 
 
@@ -24,11 +24,11 @@ Run the following commands in the command line:
 ### Screenshots and Video
 
 <p float="left">
-<img src="https://imgur.com/txV81sL" height="500px" style='display: inline-block'/>
-<img src="https://imgur.com/t01vQib" height="500px" style='display: inline-block'/>
+<img src="https://i.imgur.com/txV81sL.png" height="500px" style='display: inline-block'/>
+<img src="https://i.imgur.com/t01vQib.png?1" height="500px" style='display: inline-block'/>
 </p>
 <p float="left">
-<img src="https://imgur.com/oIHCgHj" height="500px" style='display: inline-block'/>
+<img src="https://i.imgur.com/oIHCgHj.png" height="500px" style='display: inline-block'/>
 </p>
 
 
