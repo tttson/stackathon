@@ -34,7 +34,7 @@ Run the following commands in the command line:
 
 - JavaScript
 - React
-- HTML5/CSS
+- HTML/CSS
 - Chart.js
 - Yelp Fusion API
 
