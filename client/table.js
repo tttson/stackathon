@@ -1,4 +1,5 @@
 import React from 'react'
+import MyChart from './MyChart'
 const axios = require('axios');
 const cheerio = require('cheerio');
 const yelp = require('yelp-fusion');
@@ -75,7 +76,9 @@ class Table extends React.Component {
     return (
         <div id='container'>
         { this.state.loading ? (<div className="lds-ring"><div></div><div></div><div></div><div></div></div>) :
-          (<table>
+          (
+          <div>
+            <table>
             <tbody>
               <tr>
                 <th>Sentiment Score</th>
@@ -94,7 +97,9 @@ class Table extends React.Component {
                 })
               }
             </tbody>
-           </table>)
+           </table>
+           <MyChart info={this.state.reviews}/>
+          </div>)
         }
         </div>
     )

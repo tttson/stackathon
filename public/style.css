@@ -50,6 +50,14 @@ label {
   align-items: center
 }
 
+.chart {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px
+}
+
 .submit, #header, #container {
   align-items: center;
   cursor: default;
