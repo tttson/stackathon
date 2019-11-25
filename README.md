@@ -1,10 +1,10 @@
 # Stackathon - Issa Restaurant Vibe
 
-Did you ever want to know what the vibe is like at a restaurant? 
+Did you ever want to know what the vibe is like at a restaurant BEFORE you get there? 
 
-Yelp stars indicate a general affinity but if you wanted a more details without reading the reviews, a sentiment score based on customer reviews will give you a snapshot of what the recent vibe is like at this restaurant.
+Yelp stars indicate a general affinity but if you wanted a more details without reading the reviews, a sentiment score based on customer reviews will give you a snapshot of what the recent vibe is like at a specific restaurant.
 
-Just grab a Yelp restaurant page link and enter it into the search bar.
+Just grab a Yelp restaurant page link and enter it into the search bar!
 
 Get a sentiment analysis on the recent restaurant reviews & save yourself the time you would spent reading a review!
 
