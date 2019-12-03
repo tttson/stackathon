@@ -2,7 +2,7 @@
 
 Did you ever want to know what the vibe is like at a restaurant BEFORE you get there? 
 
-Yelp stars indicate a general affinity but if you wanted a more details without reading the reviews, a sentiment score based on customer reviews will give you a snapshot of what the recent vibe is like at a specific restaurant.
+Yelp stars indicate a general affinity but if you wanted a general mood without reading the reviews, a sentiment score based on customer reviews will give you a snapshot of what the recent vibe is like at a specific restaurant.
 
 Just grab a Yelp restaurant page link and enter it into the search bar!
 
