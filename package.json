@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/tttson/stackathon#readme",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "body-parser": "^1.18.2",
     "chart.js": "^2.9.3",
     "cheerio": "^1.0.0-rc.3",
